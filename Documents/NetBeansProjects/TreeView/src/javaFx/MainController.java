@@ -15,6 +15,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 /**
  *
@@ -27,6 +28,8 @@ public class MainController implements Initializable {
     private TreeView<String> treeView;
     
     Image icon=new Image(getClass().getResourceAsStream("/img/folder.png"));
+    @FXML
+    private Label clickShow;
                 
     private void handleButtonAction(ActionEvent event) {
          
@@ -36,7 +39,7 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         TreeItem<String> root=new TreeItem<>("This PIC", new ImageView(icon));
-         
+         root.setExpanded(true);
          TreeItem<String> nodeA= new TreeItem<>("My Document", new ImageView(icon));
          TreeItem<String> nodeB= new TreeItem<>("My Pictures", new ImageView(icon));
          TreeItem<String> nodeC= new TreeItem<>("My Music", new ImageView(icon));
@@ -51,6 +54,17 @@ public class MainController implements Initializable {
          root.getChildren().add(nodeC);
           
          treeView.setRoot(root);
+          
     }    
+
+    @FXML
+    private void mouseClick(MouseEvent event) {
+        if(event.getClickCount()==2){
+            TreeItem<String> item=treeView.getSelectionModel().getSelectedItem();
+            clickShow.setText(item.getValue());
+            clickShow.setVisible(true);
+            
+        }
+    }
     
 }
