@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Lenovo
+ * @author Marc : kodjotsivanyo@gmail.com
  */
 public class Main extends Application {
     Image icon=new Image(getClass().getResourceAsStream("/img/folder.png"));
